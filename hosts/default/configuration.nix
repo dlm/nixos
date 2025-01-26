@@ -159,6 +159,7 @@
     pkgs.unzip
     pkgs.wget
     pkgs.fd
+    pkgs.xclip
 
     pkgs.gcc 
     pkgs.python3
