@@ -161,6 +161,13 @@
     pkgs.fd
     pkgs.xclip
 
+    # these are some standard tooling that I use independent of projects
+    # however I am not sure if they are here because of that or if they 
+    # are needed for neovim
+    # TODO: figure that out and put then in a neovim module if they are needed
+    # for neovim or put them in the nice to have sections if they are just 
+    # needed for nice to have
+    # If they are needed for neovim, it would be helpful to add "why"
     pkgs.gcc 
     pkgs.python3
     pkgs.go

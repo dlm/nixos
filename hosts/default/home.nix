@@ -10,9 +10,14 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.git
-    pkgs.fzf
-    pkgs.ripgrep
+    # while this block contains some nice to haves, I think that they 
+    # may be required by my neovim setup.  
+    # TODO: figure out if they are required by neovim or just that they are 
+    # things I always user.
+    # if neovim required, add to neovim and document why
+    pkgs.git # neovim plugin fugitive?
+    pkgs.fzf # neovim plugin telescope?
+    pkgs.ripgrep # neovim plugin telescope?
 	
     pkgs.atuin
     pkgs.zoxide
@@ -25,6 +30,9 @@
     pkgs.bat
     pkgs.gnumake
     pkgs.gh
+    pkgs.jq
+    pkgs.httpie
+    pkgs.tree
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
