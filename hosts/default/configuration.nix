@@ -53,25 +53,25 @@
   services.udisks2.enable = true;
   services.gvfs.enable = true;
 
-  # Enable i3 
+  # Enable i3
   services.displayManager.defaultSession = "none+i3";
   services.xserver.desktopManager.xterm.enable = false;
   services.xserver.windowManager.i3 = {
     enable = true;
     extraPackages = with pkgs; [
-      rofi 
+      rofi
       networkmanagerapplet
-      i3status 
-      i3lock 
+      i3status
+      i3lock
 
       # utilities that turn i3 into my person desktop environment
-      feh               # desktop background 
+      feh               # desktop background
       scrot             # screen capture utility
       dunst             # notification manager
-      udiskie           # auto-mount usb drives 
+      udiskie           # auto-mount usb drives
     ];
   };
-  
+
   # # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
@@ -84,9 +84,9 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  
+
   # Enable bluetooth and make it so that it is setup on boot
-  hardware.bluetooth.enable = true; 
+  hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
@@ -124,7 +124,7 @@
     nerd-fonts.fira-code
     nerd-fonts.departure-mono
   ];
-  
+
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
@@ -134,7 +134,7 @@
 
   # Install firefox.
   programs.firefox.enable = true;
- 
+
   # Install zsh
   programs.zsh.enable = true;
 
@@ -144,12 +144,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = [
-    pkgs.pavucontrol 
+    pkgs.pavucontrol
     pkgs.alsa-utils
 
-    pkgs.vim 
+    pkgs.vim
     pkgs.google-chrome
-    pkgs.distrobox 
+    pkgs.distrobox
     pkgs.slack
     pkgs.wavebox
 
@@ -162,17 +162,17 @@
     pkgs.xclip
 
     # these are some standard tooling that I use independent of projects
-    # however I am not sure if they are here because of that or if they 
+    # however I am not sure if they are here because of that or if they
     # are needed for neovim
     # TODO: figure that out and put then in a neovim module if they are needed
-    # for neovim or put them in the nice to have sections if they are just 
+    # for neovim or put them in the nice to have sections if they are just
     # needed for nice to have
     # If they are needed for neovim, it would be helpful to add "why"
-    pkgs.gcc 
+    pkgs.gcc
     pkgs.python3
     pkgs.go
 
-    # TODO: how we get this needs to be cleaned up 
+    # TODO: how we get this needs to be cleaned up
     # it is kind of just jammed in here
     inputs.ghostty.packages.x86_64-linux.default
   ];
@@ -190,7 +190,7 @@
     "io.github.zen_browser.zen"
     "org.telegram.desktop"
   ];
-  
+
   # Setup graphical file manger
   programs.thunar.enable = true;
   programs.xfconf.enable = true;
