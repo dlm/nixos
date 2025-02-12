@@ -2,14 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs,... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -18,7 +23,10 @@
   networking.hostName = "petrillo"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -26,7 +34,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.networkmanager.insertNameservers = [ "8.8.8.8" "8.8.4.4" ];
+  networking.networkmanager.insertNameservers = [
+    "8.8.8.8"
+    "8.8.4.4"
+  ];
 
   # Set your time zone.
   time.timeZone = "America/Denver";
@@ -65,10 +76,11 @@
       i3lock
 
       # utilities that turn i3 into my person desktop environment
-      feh               # desktop background
-      scrot             # screen capture utility
-      dunst             # notification manager
-      udiskie           # auto-mount usb drives
+      feh # desktop background
+      scrot # screen capture utility
+      dunst # notification manager
+      udiskie # auto-mount usb drives
+      xcape # keyboard remapping
     ];
   };
 
@@ -114,10 +126,12 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     description = "David Millman";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
     ];
+    packages = with pkgs; [ ];
   };
 
   fonts.packages = with pkgs; [
@@ -171,6 +185,7 @@
     pkgs.gcc
     pkgs.python3
     pkgs.go
+    pkgs.nixfmt-rfc-style
 
     # TODO: how we get this needs to be cleaned up
     # it is kind of just jammed in here
@@ -183,7 +198,10 @@
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   services.flatpak.enable = true;
   services.flatpak.packages = [
-    { appId = "com.brave.Browser"; origin = "flathub";  }
+    {
+      appId = "com.brave.Browser";
+      origin = "flathub";
+    }
     "com.obsproject.Studio"
     "org.zulip.Zulip"
     "md.obsidian.Obsidian"
@@ -211,8 +229,17 @@
   # setup podman
   virtualisation.podman = {
     enable = true;
-    dockerCompat = true;
+    # dockerCompat = true;
   };
+
+  # or docker (less awesome, but I can't figure out how to
+  # migrate blocky/archive to work with podman
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+  # users.dave.extraGroups = [ "docker" ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -221,7 +248,6 @@
   networking.firewall.enable = false;
   services.resolved.enable = true;
   # networking.resolvconf.useLocalResolver = true;
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
