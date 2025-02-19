@@ -1,4 +1,4 @@
-{ config, pkgs,... }:
+{ config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -10,19 +10,19 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    # while this block contains some nice to haves, I think that they 
-    # may be required by my neovim setup.  
-    # TODO: figure out if they are required by neovim or just that they are 
+    # while this block contains some nice to haves, I think that they
+    # may be required by my neovim setup.
+    # TODO: figure out if they are required by neovim or just that they are
     # things I always user.
     # if neovim required, add to neovim and document why
     pkgs.git # neovim plugin fugitive?
     pkgs.fzf # neovim plugin telescope?
     pkgs.ripgrep # neovim plugin telescope?
-	
+
     pkgs.atuin
     pkgs.zoxide
     pkgs.starship
-    
+
     pkgs.neovim
     pkgs.tmux
 
@@ -60,7 +60,6 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
-
 
   xdg.configFile = {
     "nvim".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/nvim;
