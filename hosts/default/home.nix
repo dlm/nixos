@@ -53,6 +53,8 @@
   home.file = {
     ".zshrc".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/zsh/zshrc.local;
     "bin/scripts/".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/bin/scripts;
+    "bin/scripts-bky/".source =
+      config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env-bky/bin/scripts;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
