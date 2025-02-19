@@ -185,6 +185,8 @@
     pkgs.gcc
     pkgs.python3
     pkgs.go
+    pkgs.stylua
+    pkgs.lua-language-server
     pkgs.nixfmt-rfc-style
 
     # TODO: how we get this needs to be cleaned up
