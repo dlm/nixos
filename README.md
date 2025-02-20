@@ -25,3 +25,18 @@ When using nix and i3 on `petrillo`, the network manager fails when I login.
 To work around this, run:
 
     sudo systemctl restart NetworkManager.service
+
+## Complex "default" tools (like nvim)
+
+I like having nvim available to me, unfortunately having a comfy nvim setup
+where nvim is installed "globally" (either at the system or user level) really
+does a number on the environment.  Obviously, I can switch my config fully over
+to something that is very nix based (like nixvim) however I would prefer to
+avoid an abstraction of an abstraction.  So I would like to try the following.
+For a program that pulls in a lot of system dependencies, create a flake to
+define that program in the way I like, and then start that program in its own
+environment  for example
+
+```bash
+alias v="nix develop <path-to-nvim-flake> --command nvim"
+```
