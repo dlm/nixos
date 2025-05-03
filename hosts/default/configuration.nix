@@ -208,6 +208,7 @@
     "md.obsidian.Obsidian"
     "io.github.zen_browser.zen"
     "org.telegram.desktop"
+    "com.discordapp.Discord"
   ];
 
   # Setup graphical file manger
