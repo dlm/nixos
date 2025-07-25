@@ -8,7 +8,9 @@
   inputs,
   ...
 }:
-
+let
+  wavebox = import ../../packages/wavebox.nix { inherit pkgs; };
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -124,7 +126,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dave = {
     isNormalUser = true;
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
     description = "David Millman";
     extraGroups = [
       "networkmanager"
@@ -165,7 +167,8 @@
     pkgs.google-chrome
     pkgs.distrobox
     pkgs.slack
-    pkgs.wavebox
+    # pkgs.wavebox
+    wavebox
 
     # TODO: tools needed for my neovim setup
     # these should probably be in my home config
@@ -187,10 +190,7 @@
     pkgs.stylua
     pkgs.lua-language-server
     pkgs.nixfmt-rfc-style
-
-    # TODO: how we get this needs to be cleaned up
-    # it is kind of just jammed in here
-    inputs.ghostty.packages.x86_64-linux.default
+    pkgs.ghostty
   ];
 
   # setup flatpak
@@ -236,11 +236,25 @@
 
   # or docker (less awesome, but I can't figure out how to
   # migrate blocky/archive to work with podman
-  virtualisation.docker.enable = true;
-  virtualisation.docker.rootless = {
+  # virtualisation.docker.enable = true;
+  # virtualisation.docker.rootless = {
+  #   enable = true;
+  #   setSocketVariable = true;
+  # };
+  virtualisation.docker = {
     enable = true;
-    setSocketVariable = true;
+    # rootless = {
+    #   enable = true;
+    #   setSocketVariable = true;
+    # };
+    daemon.settings = {
+      dns = [
+        "8.8.8.8"
+        "8.8.4.4"
+      ];
+    };
   };
+
   # users.dave.extraGroups = [ "docker" ];
 
   # Open ports in the firewall.

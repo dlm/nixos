@@ -22,6 +22,7 @@
     pkgs.atuin
     pkgs.zoxide
     pkgs.starship
+    pkgs.nushell
 
     pkgs.neovim
     pkgs.tmux
@@ -33,6 +34,8 @@
     pkgs.jq
     pkgs.httpie
     pkgs.tree
+
+    pkgs.gemini-cli
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
