@@ -23,6 +23,7 @@
     pkgs.zoxide
     pkgs.starship
     pkgs.nushell
+    pkgs.carapace
 
     pkgs.neovim
     pkgs.tmux
