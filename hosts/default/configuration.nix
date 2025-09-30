@@ -177,6 +177,7 @@ in
     pkgs.wget
     pkgs.fd
     pkgs.xclip
+    pkgs.harper
 
     # these are some standard tooling that I use independent of projects
     # however I am not sure if they are here because of that or if they

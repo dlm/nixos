@@ -10,6 +10,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs.home-manager
+
     # while this block contains some nice to haves, I think that they
     # may be required by my neovim setup.
     # TODO: figure out if they are required by neovim or just that they are
