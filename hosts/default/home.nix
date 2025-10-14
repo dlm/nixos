@@ -77,6 +77,8 @@
     "zsh".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/zsh;
     "rofi".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/rofi;
     "git".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/git;
+    "nushell/config.nu".source =
+      config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/nushell/config.nu;
   };
 
   # Home Manager can also manage your environment variables through
