@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
-
 {
+  imports = [
+    ../../modules/toybox.nix
+  ];
+  toybox.enable = true;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "dave";
@@ -31,7 +35,7 @@
     pkgs.tmux
 
     # nice to haves
-    pkgs.bat
+    # pkgs.bat
     pkgs.gnumake
     pkgs.gh
     pkgs.jq
