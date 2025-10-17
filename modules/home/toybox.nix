@@ -13,6 +13,7 @@
     home.packages = [
       pkgs.bat
       pkgs.glow
+      pkgs.tree
     ];
   };
 }
