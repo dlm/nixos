@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ../../modules/toybox.nix
+    ../../modules/home/toybox.nix
   ];
   toybox.enable = true;
 
@@ -35,12 +35,10 @@
     pkgs.tmux
 
     # nice to haves
-    # pkgs.bat
     pkgs.gnumake
     pkgs.gh
     pkgs.jq
     pkgs.httpie
-    pkgs.tree
 
     pkgs.gemini-cli
     pkgs.claude-code
