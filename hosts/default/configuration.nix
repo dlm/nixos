@@ -86,6 +86,9 @@ in
     ];
   };
 
+  # Enable keybord tools
+  hardware.keyboard.zsa.enable = true;
+
   # # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
@@ -162,6 +165,8 @@ in
   environment.systemPackages = [
     pkgs.pavucontrol
     pkgs.alsa-utils
+
+    pkgs.keymapp
 
     pkgs.vim
     pkgs.google-chrome
