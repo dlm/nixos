@@ -106,7 +106,7 @@
 
   # use dropbox
   nixpkgs.config.allowUnfree = true;
-  services.dropbox.enable = true;
+  # services.dropbox.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
