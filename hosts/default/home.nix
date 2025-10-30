@@ -22,6 +22,7 @@
     # things I always user.
     # if neovim required, add to neovim and document why
     pkgs.git # neovim plugin fugitive?
+    pkgs.delta # for git diffing
     pkgs.fzf # neovim plugin telescope?
     pkgs.ripgrep # neovim plugin telescope?
 
