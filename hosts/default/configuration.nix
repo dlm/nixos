@@ -197,6 +197,7 @@ in
     pkgs.lua-language-server
     pkgs.nixfmt-rfc-style
     pkgs.ghostty
+    pkgs.arandr
   ];
 
   # setup flatpak
