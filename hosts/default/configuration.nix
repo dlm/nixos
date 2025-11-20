@@ -16,6 +16,7 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
+    ../../modules/system/i3-desktop.nix
   ];
 
   # Bootloader.
@@ -59,32 +60,9 @@ in
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # setup auto mount of usb disks
-  services.udisks2.enable = true;
-  services.gvfs.enable = true;
-
-  # Enable i3
+  # Enable desktops
   services.displayManager.defaultSession = "none+i3";
-  services.xserver.desktopManager.xterm.enable = false;
-  services.xserver.windowManager.i3 = {
-    enable = true;
-    extraPackages = with pkgs; [
-      rofi
-      networkmanagerapplet
-      i3status
-      i3lock
-
-      # utilities that turn i3 into my person desktop environment
-      feh # desktop background
-      scrot # screen capture utility
-      dunst # notification manager
-      udiskie # auto-mount usb drives
-      xcape # keyboard remapping
-    ];
-  };
+  i3Desktop.enable = true;
 
   # Enable keybord tools
   hardware.keyboard.zsa.enable = true;
@@ -217,10 +195,6 @@ in
     "org.telegram.desktop"
     "com.discordapp.Discord"
   ];
-
-  # Setup graphical file manger
-  programs.thunar.enable = true;
-  programs.xfconf.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
