@@ -104,6 +104,7 @@
     EDITOR = "nvim";
   };
 
+
   # use dropbox
   nixpkgs.config.allowUnfree = true;
   # services.dropbox.enable = true;

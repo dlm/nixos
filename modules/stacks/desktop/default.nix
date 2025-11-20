@@ -1,18 +1,21 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
+  username,
   ...
 }:
+
 {
-  options = {
-    i3Desktop.enable = lib.mkEnableOption "enables i3";
+  options.stacks.desktop = {
+    enable = lib.mkEnableOption "desktop stack with i3 window manager";
   };
 
-  config = lib.mkIf config.i3Desktop.enable {
+  config = lib.mkIf config.stacks.desktop.enable {
     # xserver config
     services.xserver.enable = true;
     services.xserver.desktopManager.xterm.enable = false;
+    services.xserver.windowManager.i3.enable = true;
 
     # disk mounting
     services.udisks2.enable = true;
@@ -22,16 +25,19 @@
     programs.thunar.enable = true;
     programs.xfconf.enable = true;
 
-    services.xserver.windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
+    # Home Manager configuration
+    home-manager.users.${username} = {
+      services.dunst.enable = true;
+
+      # Base packages for desktop stack
+      home.packages = with pkgs; [
         # status bar
         i3status
         networkmanagerapplet
 
         # person desktop environment
         i3lock # lock screen
-        rofi # for the launcher
+        rofi # launcher
         feh # desktop background
         scrot # screen capture utility
         dunst # notification manager

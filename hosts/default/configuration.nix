@@ -16,8 +16,14 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
-    ../../modules/system/i3-desktop.nix
+    # ../../modules/system/kanata.nix
+    ../../modules/stacks/desktop
   ];
+
+  # Make username available to all modules
+  _module.args = {
+    username = "dave";
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -62,7 +68,7 @@ in
 
   # Enable desktops
   services.displayManager.defaultSession = "none+i3";
-  i3Desktop.enable = true;
+  stacks.desktop.enable = true;
 
   # Enable keybord tools
   hardware.keyboard.zsa.enable = true;
@@ -245,6 +251,8 @@ in
   networking.firewall.enable = false;
   services.resolved.enable = true;
   # networking.resolvconf.useLocalResolver = true;
+
+  # kanata.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
