@@ -6,14 +6,15 @@
 }:
 {
   options = {
-    toybox.enable = lib.mkEnableOption "enables toybox";
+    home.toybox.enable = lib.mkEnableOption "enables toybox";
   };
 
-  config = lib.mkIf config.toybox.enable {
-    home.packages = [
-      pkgs.bat
-      pkgs.glow
-      pkgs.tree
+  config = lib.mkIf config.home.toybox.enable {
+    home.packages = with pkgs; [
+      bat
+      glow
+      tree
+      yazi
     ];
   };
 }

@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ../../modules/home/toybox.nix
+    ../../modules/home
   ];
-  toybox.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -11,66 +10,34 @@
   home.homeDirectory = "/home/dave";
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = [
-    pkgs.home-manager
+  home.nushell.enable = true;
+  home.neovim.enable = true;
+  home.toybox.enable = true;
+  home.git.enable = true;
+  home.ai.enable = true;
 
-    # while this block contains some nice to haves, I think that they
-    # may be required by my neovim setup.
-    # TODO: figure out if they are required by neovim or just that they are
-    # things I always user.
-    # if neovim required, add to neovim and document why
-    pkgs.git # neovim plugin fugitive?
-    pkgs.delta # for git diffing
-    pkgs.fzf # neovim plugin telescope?
-    pkgs.ripgrep # neovim plugin telescope?
+  home.packages = with pkgs; [
+    home-manager
 
-    pkgs.atuin
-    pkgs.zoxide
-    pkgs.starship
-    pkgs.nushell
-    pkgs.carapace
-
-    pkgs.neovim
-    pkgs.tmux
+    # standards
+    fzf
+    tmux
 
     # nice to haves
-    pkgs.gnumake
-    pkgs.gh
-    pkgs.jq
-    pkgs.httpie
+    gnumake
 
-    pkgs.gemini-cli
-    pkgs.claude-code
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    # would like to move away from in favor of nushell
+    jq
+    httpie
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
+  # Here we use mkOutofStoreSymlink so that we don't have to
+  # rerun home manager on every config update
   home.file = {
     ".zshrc".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/zsh/zshrc.local;
     "bin/scripts/".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/bin/scripts;
     "bin/scripts-bky/".source =
       config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env-bky/bin/scripts;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
   };
 
   xdg.configFile = {
@@ -104,7 +71,6 @@
     EDITOR = "nvim";
   };
 
-
   # use dropbox
   nixpkgs.config.allowUnfree = true;
   # services.dropbox.enable = true;
@@ -112,7 +78,4 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # setup direnv
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
 }
