@@ -41,6 +41,7 @@
         feh # desktop background
         scrot # screen capture utility
         dunst # notification manager
+        libnotify # send notifications
         udiskie # auto-mount usb drives
         xcape # keyboard remapping
       ];
