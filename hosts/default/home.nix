@@ -30,6 +30,7 @@
 
     # nice to haves
     gnumake
+    zathura
 
     # would like to move away from in favor of nushell
     jq
