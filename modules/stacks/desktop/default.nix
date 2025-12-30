@@ -44,6 +44,7 @@
         libnotify # send notifications
         udiskie # auto-mount usb drives
         xcape # keyboard remapping
+        xclip # clipboard management
       ];
     };
   };
