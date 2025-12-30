@@ -200,6 +200,7 @@ in
     "io.github.zen_browser.zen"
     "org.telegram.desktop"
     "com.discordapp.Discord"
+    "org.signal.Signal"
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
