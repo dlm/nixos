@@ -22,7 +22,6 @@ pkgs.stdenv.mkDerivation rec {
     # create a wrapper that runs it via appimage-run
     cat > $out/bin/wavebox <<EOF
     #!${pkgs.runtimeShell}
-    sha256sum $out/bin/wavebox.AppImage
     exec ${pkgs.appimage-run}/bin/appimage-run $out/bin/wavebox.AppImage "\$@"
     EOF
 
@@ -31,11 +30,11 @@ pkgs.stdenv.mkDerivation rec {
     # extract the appimage
     mkdir -p tmp
     cd tmp
-    ${pkgs.appimage-run}/bin/appimage-run -x . $out/bin/wavebox.AppImage || true
+    ${pkgs.appimage-run}/bin/appimage-run -x . $out/bin/wavebox.AppImage
 
-    # Desktop entry
+    # Install icon and desktop entry
     install -Dm644 wavebox.png $out/share/pixmaps/wavebox.png
-    install -Dm644 /dev/null $out/share/applications/wavebox.desktop
+    mkdir -p $out/share/applications
     cat > $out/share/applications/wavebox.desktop <<EOF
     [Desktop Entry]
     Name=Wavebox
@@ -44,6 +43,10 @@ pkgs.stdenv.mkDerivation rec {
     Type=Application
     Categories=Network;WebBrowser;
     EOF
+
+    # Clean up
+    cd ..
+    rm -rf tmp
   '';
 
   meta = with pkgs.lib; {
