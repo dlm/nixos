@@ -20,9 +20,7 @@ pkgs.stdenv.mkDerivation rec {
   dontPatchELF = true;
 
   installPhase = ''
-    mkdir -p $out/bin
-    cp $src $out/bin/wavebox.AppImage
-    chmod +x $out/bin/wavebox.AppImage
+    install -D $src $out/bin/wavebox.AppImage
 
     # create a wrapper that runs it via appimage-run
     cat > $out/bin/wavebox <<EOF
@@ -39,10 +37,8 @@ pkgs.stdenv.mkDerivation rec {
     ${pkgs.appimage-run}/bin/appimage-run -x . $out/bin/wavebox.AppImage || true
 
     # Desktop entry
-    mkdir -p $out/share/pixmaps/
-    cp wavebox.png $out/share/pixmaps/wavebox.png
-
-    mkdir -p $out/share/applications/
+    install -Dm644 wavebox.png $out/share/pixmaps/wavebox.png
+    install -Dm644 /dev/null $out/share/applications/wavebox.desktop
     cat > $out/share/applications/wavebox.desktop <<EOF
     [Desktop Entry]
     Name=Wavebox
