@@ -10,7 +10,10 @@ pkgs.stdenv.mkDerivation rec {
     sha256 = "8326336c3cf642da91534e4abc96a6b8d975f24f9db5b0121b81c1217ed5dfda";
   };
 
-  nativeBuildInputs = [ pkgs.appimage-run ];
+  nativeBuildInputs = [
+    pkgs.appimage-run
+    pkgs.file
+  ];
 
   dontUnpack = true;
   dontStrip = true;
@@ -30,13 +33,21 @@ pkgs.stdenv.mkDerivation rec {
 
     chmod +x $out/bin/wavebox
 
+    # extract the appimage
+    mkdir -p tmp
+    cd tmp
+    ${pkgs.appimage-run}/bin/appimage-run -x . $out/bin/wavebox.AppImage || true
+
     # Desktop entry
-    mkdir -p $out/share/applications
+    mkdir -p $out/share/pixmaps/
+    cp wavebox.png $out/share/pixmaps/wavebox.png
+
+    mkdir -p $out/share/applications/
     cat > $out/share/applications/wavebox.desktop <<EOF
     [Desktop Entry]
     Name=Wavebox
     Exec=$out/bin/wavebox
-    Icon=wavebox
+    Icon=$out/share/pixmaps/wavebox.png
     Type=Application
     Categories=Network;WebBrowser;
     EOF
