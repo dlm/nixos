@@ -10,10 +10,7 @@ pkgs.stdenv.mkDerivation rec {
     sha256 = "8326336c3cf642da91534e4abc96a6b8d975f24f9db5b0121b81c1217ed5dfda";
   };
 
-  nativeBuildInputs = [
-    pkgs.appimage-run
-    pkgs.file
-  ];
+  nativeBuildInputs = [ pkgs.appimage-run ];
 
   dontUnpack = true;
   dontStrip = true;
