@@ -6,7 +6,7 @@
 }:
 {
   options = {
-    home.git.enable = lib.mkEnableOption "enables neovim";
+    home.git.enable = lib.mkEnableOption "enables git";
   };
 
   config = lib.mkIf config.home.git.enable {
