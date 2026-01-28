@@ -15,6 +15,7 @@
       glow
       tree
       yazi
+      xdotool
     ];
   };
 }
