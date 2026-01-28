@@ -27,7 +27,14 @@
 
     # Home Manager configuration
     home-manager.users.${username} = {
+      # notificaiton manager
       services.dunst.enable = true;
+
+      # background manager
+      services.feh-background.enable = true;
+
+      # clipboad manager
+      services.clipmenu.enable = true;
 
       # Base packages for desktop stack
       home.packages = with pkgs; [
