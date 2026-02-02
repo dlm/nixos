@@ -12,10 +12,11 @@
   config = lib.mkIf config.home.toybox.enable {
     home.packages = with pkgs; [
       bat
+      figlet
       glow
       tree
-      yazi
       xdotool
+      yazi
     ];
   };
 }
