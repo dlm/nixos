@@ -123,6 +123,24 @@ in
     packages = with pkgs; [ ];
   };
 
+  # Enable removable media management
+  services.udisks2.enable = true;
+
+  # Polkit rules - allow wheel group to mount USB drives without password
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (
+        subject.isInGroup("wheel")
+        && (action.id == "org.freedesktop.udisks2.filesystem-mount" ||
+            action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
+            action.id == "org.freedesktop.udisks2.eject-media" ||
+            action.id == "org.freedesktop.udisks2.power-off-drive")
+      ) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
+
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
     nerd-fonts.departure-mono

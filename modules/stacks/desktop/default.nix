@@ -17,11 +17,8 @@
     services.xserver.desktopManager.xterm.enable = false;
     services.xserver.windowManager.i3.enable = true;
 
-    # disk mounting
-    services.udisks2.enable = true;
+    # file manager + virtual filesystem support
     services.gvfs.enable = true;
-
-    # file manager
     programs.thunar.enable = true;
     programs.xfconf.enable = true;
 
@@ -36,6 +33,9 @@
       # clipboad manager
       services.clipmenu.enable = true;
 
+      # auto-mount removable media
+      services.udiskie.enable = true;
+
       # Base packages for desktop stack
       home.packages = with pkgs; [
         # status bar
@@ -49,7 +49,6 @@
         scrot # screen capture utility
         dunst # notification manager
         libnotify # send notifications
-        udiskie # auto-mount usb drives
         xcape # keyboard remapping
         xclip # clipboard management
         clipmenu # clipboard management
