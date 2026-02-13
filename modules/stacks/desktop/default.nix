@@ -3,8 +3,12 @@
   lib,
   pkgs,
   username,
+  inputs,
   ...
 }:
+let
+  muxwm = inputs.muxwm.packages.${pkgs.system}.default;
+in
 
 {
   options.stacks.desktop = {
@@ -52,6 +56,9 @@
         xcape # keyboard remapping
         xclip # clipboard management
         clipmenu # clipboard management
+
+        # personal tools
+        muxwm
       ];
     };
   };
