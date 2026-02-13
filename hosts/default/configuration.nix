@@ -16,7 +16,6 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
-    # ../../modules/system/kanata.nix
     ../../modules/stacks/desktop
   ];
 
@@ -270,8 +269,6 @@ in
   networking.firewall.enable = false;
   services.resolved.enable = true;
   # networking.resolvconf.useLocalResolver = true;
-
-  # kanata.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
