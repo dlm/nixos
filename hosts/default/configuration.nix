@@ -215,7 +215,7 @@ in
     "com.obsproject.Studio"
     "org.zulip.Zulip"
     "md.obsidian.Obsidian"
-    "io.github.zen_browser.zen"
+    "app.zen_browser.zen"
     "org.telegram.desktop"
     "com.discordapp.Discord"
     "org.signal.Signal"
