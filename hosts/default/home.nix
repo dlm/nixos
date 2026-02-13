@@ -31,6 +31,7 @@
     # nice to haves
     gnumake
     zathura
+    taskwarrior3
 
     # would like to move away from in favor of nushell
     jq
