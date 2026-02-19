@@ -12,6 +12,7 @@
   config = lib.mkIf config.home.toybox.enable {
     home.packages = with pkgs; [
       bat
+      btop
       figlet
       glow
       tree
