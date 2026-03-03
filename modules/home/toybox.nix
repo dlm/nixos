@@ -18,6 +18,8 @@
       tree
       xdotool
       yazi
+
+      impala # for terminal based wifi management
     ];
   };
 }
