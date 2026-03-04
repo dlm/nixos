@@ -7,6 +7,7 @@
 }:
 let
   ai-tools = inputs.nix-ai-tools.packages.${pkgs.system};
+  haplab = inputs.haplab.packages.${pkgs.system};
 in
 {
   options = {
@@ -19,6 +20,9 @@ in
       ai-tools.claude-code
       ai-tools.codex
       ai-tools.amp
+
+      haplab.sidecar
+      haplab.td
     ];
   };
 }

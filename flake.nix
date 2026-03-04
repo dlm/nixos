@@ -6,6 +6,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nix-ai-tools.url = "github:numtide/nix-ai-tools";
     muxwm.url = "github:dlm/muxwm";
+    haplab.url = "path:./packages/haplab";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
