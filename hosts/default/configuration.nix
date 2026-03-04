@@ -9,7 +9,7 @@
   ...
 }:
 let
-  wavebox = import ../../packages/wavebox.nix { inherit pkgs; };
+  wavebox = inputs.wavebox.packages.${pkgs.system}.default;
 in
 {
   imports = [
@@ -177,7 +177,7 @@ in
     pkgs.google-chrome
     pkgs.distrobox
     pkgs.slack
-    # pkgs.wavebox
+
     wavebox
 
     # TODO: tools needed for my neovim setup
