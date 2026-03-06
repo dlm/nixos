@@ -42,14 +42,10 @@ in
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
   networking.networkmanager.insertNameservers = [
     "8.8.8.8"
     "8.8.4.4"
   ];
-
-  # Enable iwd as the wireless backend
-  networking.wireless.iwd.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Denver";

@@ -19,8 +19,6 @@
       xdotool
       yazi
       zeal
-
-      impala # for terminal based wifi management
     ];
   };
 }
