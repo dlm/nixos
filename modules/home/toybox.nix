@@ -15,6 +15,7 @@
       btop
       figlet
       glow
+      gum
       tree
       xdotool
       yazi
