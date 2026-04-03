@@ -45,6 +45,12 @@
     "bin/scripts/".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/bin/scripts;
     "bin/scripts-bky/".source =
       config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env-bky/bin/scripts;
+    # our launch script acts as a wrapper for the various tools we use across
+    # many projects.  We put that in a "well known" location so that we can
+    # link the launch script to a "well known" location
+    # so that we can launch our tool from anywhere
+    ".local/bin/launch".source =
+      config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/bin/scripts/launch;
   };
 
   xdg.configFile = {
