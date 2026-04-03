@@ -6,7 +6,7 @@
   ...
 }:
 let
-  ai-tools = inputs.nix-ai-tools.packages.${pkgs.system};
+  ai-tools = inputs.llm-agents.packages.${pkgs.system};
   haplab = inputs.haplab.packages.${pkgs.system};
 in
 {
@@ -16,12 +16,10 @@ in
 
   config = lib.mkIf config.home.ai.enable {
     home.packages = with pkgs; [
-      gemini-cli
+      ai-tools.gemini-cli
       ai-tools.claude-code
       ai-tools.codex
-      ai-tools.amp
 
-      haplab.sidecar
       haplab.td
     ];
   };
