@@ -7,7 +7,7 @@
   ...
 }:
 let
-  muxwm = inputs.muxwm.packages.${pkgs.system}.default;
+  muxwm = inputs.muxwm.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 
 {

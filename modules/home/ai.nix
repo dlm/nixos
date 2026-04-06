@@ -6,8 +6,8 @@
   ...
 }:
 let
-  ai-tools = inputs.llm-agents.packages.${pkgs.system};
-  haplab = inputs.haplab.packages.${pkgs.system};
+  ai-tools = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
+  haplab = inputs.haplab.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
   options = {
