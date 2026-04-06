@@ -148,6 +148,27 @@
         "type": "github"
       }
     },
+    "key-safe": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "sops-nix": "sops-nix"
+      },
+      "locked": {
+        "lastModified": 1775503162,
+        "narHash": "sha256-h8G4gNpOy2xPP8gMKFM6ufyTx1624+IAVAALp8OJC0o=",
+        "path": "/home/dave/repos/dlm/key-safe",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/dave/repos/dlm/key-safe",
+        "type": "path"
+      }
+    },
     "llm-agents": {
       "inputs": {
         "blueprint": "blueprint",
@@ -290,6 +311,7 @@
       "inputs": {
         "haplab": "haplab",
         "home-manager": "home-manager",
+        "key-safe": "key-safe",
         "llm-agents": "llm-agents",
         "muxwm": "muxwm",
         "nix-flatpak": "nix-flatpak",
@@ -315,6 +337,27 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "key-safe",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775365543,
+        "narHash": "sha256-f50qrK0WwZ9z5EdaMGWOTtALgSF7yb7XwuE7LjCuDmw=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "a4ee2de76efb759fe8d4868c33dec9937897916f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
         "type": "github"
       }
     },

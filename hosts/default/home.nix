@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    inputs.key-safe.homeManagerModules.secrets
     ../../modules/home
   ];
 
@@ -23,6 +24,9 @@
 
   home.packages = with pkgs; [
     home-manager
+
+    # key management
+    sops
 
     # standards
     fzf
