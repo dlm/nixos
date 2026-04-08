@@ -20,6 +20,8 @@ in
     services.xserver.enable = true;
     services.xserver.desktopManager.xterm.enable = false;
     services.xserver.windowManager.i3.enable = true;
+    services.xserver.autoRepeatInterval = 300;
+    services.xserver.autoRepeatDelay = 20;
 
     # file manager + virtual filesystem support
     services.gvfs.enable = true;
