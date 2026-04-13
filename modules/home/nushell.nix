@@ -14,14 +14,10 @@
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
 
-    home.packages = with pkgs; [
-      nushell
-
-      # dependencies in the configuration
-      atuin # for shell history
-      zoxide # for moving around quickly
-      starship # for fancy shell prompt
-      carapace # for shell completion
-    ];
+    programs.nushell.enable = true;
+    programs.starship.enable = true;
+    programs.atuin.enable = true;
+    programs.zoxide.enable = true;
+    programs.carapace.enable = true;
   };
 }

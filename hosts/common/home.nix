@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    inputs.key-safe.homeManagerModules.secrets
+    #inputs.key-safe.homeManagerModules.secrets
     ../../modules/home
   ];
 
@@ -67,9 +67,11 @@
     "git".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/git;
     "feh".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/feh;
     "dunst/dunstrc".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/dunst/dunstrc;
-    "nushell/config.nu".source =
-      config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/nushell/config.nu;
   };
+
+  programs.nushell.extraConfig = ''
+    source /home/dave/repos/dlm/env/nushell/config.nu
+  '';
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

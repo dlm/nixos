@@ -148,27 +148,6 @@
         "type": "github"
       }
     },
-    "key-safe": {
-      "inputs": {
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "sops-nix": "sops-nix"
-      },
-      "locked": {
-        "lastModified": 1775758129,
-        "narHash": "sha256-P0isYD/VpuJXTolru/w6l9crY9dRP6i4uX9BeLN5qVk=",
-        "path": "/home/dave/repos/dlm/key-safe",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/dave/repos/dlm/key-safe",
-        "type": "path"
-      }
-    },
     "llm-agents": {
       "inputs": {
         "blueprint": "blueprint",
@@ -307,33 +286,15 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
-      "locked": {
-        "lastModified": 1772542754,
-        "narHash": "sha256-WGV2hy+VIeQsYXpsLjdr4GvHv5eECMISX1zKLTedhdg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "8c809a146a140c5c8806f13399592dbcb1bb5dc4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "haplab": "haplab",
         "home-manager": "home-manager",
-        "key-safe": "key-safe",
         "llm-agents": "llm-agents",
         "muxwm": "muxwm",
         "nix-flatpak": "nix-flatpak",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_4",
-        "wavebox": "wavebox"
+        "nixpkgs": "nixpkgs_4"
       }
     },
     "rust-overlay": {
@@ -354,27 +315,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "sops-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "key-safe",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1775682595,
-        "narHash": "sha256-0E9PohY/VuESLq0LR4doaH7hTag513sDDW5n5qmHd1Q=",
-        "owner": "Mic92",
-        "repo": "sops-nix",
-        "rev": "d2e8438d5886e92bc5e7c40c035ab6cae0c41f76",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Mic92",
-        "repo": "sops-nix",
         "type": "github"
       }
     },
@@ -428,20 +368,6 @@
         "repo": "treefmt-nix",
         "type": "github"
       }
-    },
-    "wavebox": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_5"
-      },
-      "locked": {
-        "path": "./packages/wavebox",
-        "type": "path"
-      },
-      "original": {
-        "path": "./packages/wavebox",
-        "type": "path"
-      },
-      "parent": []
     }
   },
   "root": "root",

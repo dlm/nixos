@@ -13,12 +13,12 @@
     llm-agents.url = "github:numtide/llm-agents.nix";
     muxwm.url = "github:dlm/muxwm";
     haplab.url = "path:./packages/haplab";
-    wavebox.url = "path:./packages/wavebox";
-    key-safe = {
-      url = "path:/home/dave/repos/dlm/key-safe";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    #wavebox.url = "path:./packages/wavebox";
+    #key-safe = {
+    #  url = "path:/home/dave/repos/dlm/key-safe";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #  inputs.home-manager.follows = "home-manager";
+    #};
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";

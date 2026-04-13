@@ -5,7 +5,7 @@
   ...
 }:
 let
-  wavebox = inputs.wavebox.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  #wavebox = inputs.wavebox.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   imports = [
@@ -147,7 +147,7 @@ in
     pkgs.distrobox
     pkgs.slack
 
-    wavebox
+    #wavebox
 
     pkgs.unzip
     pkgs.wget
