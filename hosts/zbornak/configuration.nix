@@ -15,9 +15,10 @@
 
   # HiDPI display (2880x1920 @ 13") - 1.5x scaling
   home-manager.users.dave = {
-    xresources.properties = {
-      "Xft.dpi" = "144";
-    };
+    xresources.properties."Xft.dpi" = "144";
+    home.file.".config/ghostty/config.local".text = ''
+      font-size = 12
+    '';
   };
 
   # Enable firmware updates (recommended for Framework laptops)
