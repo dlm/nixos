@@ -55,7 +55,6 @@ in
         scrot # screen capture utility
         dunst # notification manager
         libnotify # send notifications
-        xcape # keyboard remapping
         xclip # clipboard management
         clipmenu # clipboard management
 
