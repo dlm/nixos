@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    #inputs.key-safe.homeManagerModules.secrets
+    inputs.key-safe.homeManagerModules.secrets
     ../../modules/home
   ];
 

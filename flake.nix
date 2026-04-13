@@ -17,11 +17,11 @@
       url = "path:./packages/wavebox";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #key-safe = {
-    #  url = "path:/home/dave/repos/dlm/key-safe";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #  inputs.home-manager.follows = "home-manager";
-    #};
+    key-safe = {
+      url = "path:/home/dave/repos/dlm/key-safe";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
