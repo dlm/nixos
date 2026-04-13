@@ -13,7 +13,10 @@
     llm-agents.url = "github:numtide/llm-agents.nix";
     muxwm.url = "github:dlm/muxwm";
     haplab.url = "path:./packages/haplab";
-    #wavebox.url = "path:./packages/wavebox";
+    wavebox = {
+      url = "path:./packages/wavebox";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #key-safe = {
     #  url = "path:/home/dave/repos/dlm/key-safe";
     #  inputs.nixpkgs.follows = "nixpkgs";

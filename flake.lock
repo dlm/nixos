@@ -294,7 +294,8 @@
         "muxwm": "muxwm",
         "nix-flatpak": "nix-flatpak",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_4",
+        "wavebox": "wavebox"
       }
     },
     "rust-overlay": {
@@ -368,6 +369,22 @@
         "repo": "treefmt-nix",
         "type": "github"
       }
+    },
+    "wavebox": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "path": "./packages/wavebox",
+        "type": "path"
+      },
+      "original": {
+        "path": "./packages/wavebox",
+        "type": "path"
+      },
+      "parent": []
     }
   },
   "root": "root",
