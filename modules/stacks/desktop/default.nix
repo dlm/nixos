@@ -58,6 +58,9 @@ in
         xclip # clipboard management
         clipmenu # clipboard management
 
+        # brightness control
+        brightnessctl
+
         # personal tools
         muxwm
       ];
