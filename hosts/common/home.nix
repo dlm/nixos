@@ -102,14 +102,16 @@
     overrideFolders = true;
     settings = {
       devices = {
+        petrillo.id = "ZD6ISOA-AVKTGWH-OHFRGEZ-6MZNIJT-6PBDXC3-J7M23WX-C6DUHQ6-E2HPPAS";
         zbornak.id = "ZFML5X7-W3ZPIDT-3YB3DPI-AY3JUBR-DRY533J-MHDEDGX-T7CZO3X-P7E7HQ3";
-        # TODO: fill in after first rebuild on petrillo (`syncthing cli show system | grep myID`):
-        # petrillo.id = "";
       };
       folders = {
         notes = {
           path = "~/sync/notes";
-          devices = [ "zbornak" ]; # TODO: add "petrillo" once its ID is filled in above
+          devices = [
+            "zbornak"
+            "petrillo"
+          ];
           versioning = {
             type = "staggered";
             params = {
