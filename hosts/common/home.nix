@@ -94,9 +94,33 @@
     EDITOR = "nvim";
   };
 
-  # use dropbox
   nixpkgs.config.allowUnfree = true;
-  # services.dropbox.enable = true;
+
+  services.syncthing = {
+    enable = true;
+    overrideDevices = true;
+    overrideFolders = true;
+    settings = {
+      devices = {
+        zbornak.id = "ZFML5X7-W3ZPIDT-3YB3DPI-AY3JUBR-DRY533J-MHDEDGX-T7CZO3X-P7E7HQ3";
+        # TODO: fill in after first rebuild on petrillo (`syncthing cli show system | grep myID`):
+        # petrillo.id = "";
+      };
+      folders = {
+        notes = {
+          path = "~/sync/notes";
+          devices = [ "zbornak" ]; # TODO: add "petrillo" once its ID is filled in above
+          versioning = {
+            type = "staggered";
+            params = {
+              cleanInterval = "3600";
+              maxAge = "31536000"; # 1 year
+            };
+          };
+        };
+      };
+    };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
