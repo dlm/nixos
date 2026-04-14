@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     key-safe = {
-      url = "path:/home/dave/repos/dlm/key-safe";
+      url = "git+file:///home/dave/repos/dlm/key-safe";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
