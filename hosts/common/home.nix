@@ -104,6 +104,7 @@
       devices = {
         petrillo.id = "ZD6ISOA-AVKTGWH-OHFRGEZ-6MZNIJT-6PBDXC3-J7M23WX-C6DUHQ6-E2HPPAS";
         zbornak.id = "ZFML5X7-W3ZPIDT-3YB3DPI-AY3JUBR-DRY533J-MHDEDGX-T7CZO3X-P7E7HQ3";
+        tanner.id = "DH27P74-WUSNTGM-GGLXCZA-2PWMGES-SLJJ266-CIP2QBC-CMN5NFF-FTLHJQG";
       };
       folders = {
         notes = {
@@ -111,6 +112,7 @@
           devices = [
             "zbornak"
             "petrillo"
+            "tanner"
           ];
           versioning = {
             type = "staggered";
