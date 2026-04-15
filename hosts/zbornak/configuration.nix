@@ -27,7 +27,10 @@
   powerManagement.enable = true;
   systemd.sleep.extraConfig = ''
     AllowHibernation=yes
+    HibernateDelaySec=2h
   '';
+
+  services.logind.lidSwitch = "suspend-then-hibernate";
 
   boot.kernelParams = [ "resume=/dev/disk/by-uuid/5921c9da-4108-4349-a03b-6cb0bee86251" ];
 
