@@ -24,5 +24,9 @@
   # Enable firmware updates (recommended for Framework laptops)
   services.fwupd.enable = true;
 
+  powerManagement.enable = true;
+
+  boot.resumeDevice = "/dev/disk/by-uuid/5921c9da-4108-4349-a03b-6cb0bee86251";
+
   system.stateVersion = "25.11";
 }
