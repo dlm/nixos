@@ -25,8 +25,11 @@
   services.fwupd.enable = true;
 
   powerManagement.enable = true;
+  systemd.sleep.extraConfig = ''
+    AllowHibernation=yes
+  '';
 
-  boot.resumeDevice = "/dev/disk/by-uuid/5921c9da-4108-4349-a03b-6cb0bee86251";
+  boot.kernelParams = [ "resume=/dev/disk/by-uuid/5921c9da-4108-4349-a03b-6cb0bee86251" ];
 
   system.stateVersion = "25.11";
 }
