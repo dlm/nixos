@@ -118,6 +118,7 @@ in
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
     nerd-fonts.departure-mono
+    nerd-fonts.jetbrains-mono
   ];
 
   home-manager = {
@@ -161,6 +162,7 @@ in
     pkgs.lua-language-server
     pkgs.nixfmt-rfc-style
     pkgs.ghostty
+    pkgs.kitty
     pkgs.arandr
   ];
 

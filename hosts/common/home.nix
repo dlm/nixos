@@ -65,6 +65,7 @@
     "zsh".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/zsh;
     "rofi".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/rofi;
     "ghostty".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/ghostty;
+    "kitty".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/kitty;
     "git".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/git;
     "feh".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/feh;
     "dunst/dunstrc".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/dunst/dunstrc;
