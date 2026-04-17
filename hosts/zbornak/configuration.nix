@@ -19,6 +19,9 @@
     home.file.".config/ghostty/config.local".text = ''
       font-size = 12
     '';
+    home.file.".config/kitty/local.conf".text = ''
+      font_size 12.0
+    '';
   };
 
   # Enable firmware updates (recommended for Framework laptops)
