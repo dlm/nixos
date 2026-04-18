@@ -205,4 +205,6 @@ in
 
   networking.firewall.enable = false;
   services.resolved.enable = true;
+
+  services.tailscale.enable = true;
 }
