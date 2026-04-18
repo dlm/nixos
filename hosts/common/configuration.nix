@@ -128,6 +128,9 @@ in
     };
   };
 
+  # Enable dconf (needed for GTK settings/dark mode under non-GNOME sessions)
+  programs.dconf.enable = true;
+
   # Install firefox.
   programs.firefox.enable = true;
 

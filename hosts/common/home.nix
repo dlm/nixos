@@ -93,6 +93,19 @@
   #
   #  /etc/profiles/per-user/dave/etc/profile.d/hm-session-vars.sh
   #
+  # Dark mode for GTK3/4 apps and libadwaita (also used by XDG portal for flatpak apps)
+  gtk = {
+    enable = true;
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };
