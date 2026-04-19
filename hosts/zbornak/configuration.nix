@@ -90,8 +90,8 @@
     HibernateDelaySec=2h
   '';
 
-  services.logind.lidSwitch = "suspend-then-hibernate";
-  services.logind.lidSwitchDocked = "ignore";
+  services.logind.settings.Login.HandleLidSwitch = "suspend-then-hibernate";
+  services.logind.settings.Login.HandleLidSwitchDocked = "ignore";
 
   boot.kernelParams = [ "resume=/dev/disk/by-uuid/5921c9da-4108-4349-a03b-6cb0bee86251" ];
 
