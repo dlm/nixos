@@ -74,5 +74,7 @@
   services.logind.settings.Login.HandleLidSwitchDocked = "ignore";
   services.hardware.bolt.enable = true;
 
+  nix.settings.secret-key-files = [ "/home/dave/.config/nix/signing-key.sec" ];
+
   system.stateVersion = "24.11";
 }
