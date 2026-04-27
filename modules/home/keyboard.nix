@@ -34,5 +34,9 @@
     };
 
     systemd.user.services.xcape.Unit.After = [ "xkb-remap.service" ];
+
+    home.packages = [
+      pkgs.xcape
+    ];
   };
 }
