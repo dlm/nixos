@@ -29,6 +29,9 @@
     # key management
     sops
 
+    # backup
+    restic
+
     # standards
     fzf
     tmux

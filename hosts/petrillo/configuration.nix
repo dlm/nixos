@@ -76,5 +76,25 @@
 
   nix.settings.secret-key-files = [ "/home/dave/.config/nix/signing-key.sec" ];
 
+  # backups
+  services.restic.backups.test-to-nuc = {
+    repository = "sftp:dave@nuc-0:/backups";
+    passwordFile = "/home/dave/.config/sops-nix/secrets/hosts/petrillo/restic-password";
+
+    paths = [
+      "/home/dave/tmp/learn-to-restic/my-imporatnt-data"
+    ];
+
+    extraOptions = [
+      "sftp.command='ssh dave@nuc-0 -i /home/dave/.config/sops-nix/secrets/hosts/petrillo/restic-ssh-key -s sftp'"
+    ];
+
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+      RandomizedDelaySec = "30m";
+    };
+  };
+
   system.stateVersion = "24.11";
 }
