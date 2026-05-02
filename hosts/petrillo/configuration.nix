@@ -77,12 +77,58 @@
   nix.settings.secret-key-files = [ "/home/dave/.config/nix/signing-key.sec" ];
 
   # backups
-  services.restic.backups.test-to-nuc = {
-    repository = "sftp:dave@nuc-0:/backups";
+  services.restic.backups.home = {
+    repository = "sftp:dave@nuc-0:/backups/restic/petrillo";
     passwordFile = "/home/dave/.config/sops-nix/secrets/hosts/petrillo/restic-password";
 
     paths = [
-      "/home/dave/tmp/learn-to-restic/my-imporatnt-data"
+      "/home/dave/repos"
+      "/home/dave/secrets"
+      "/home/dave/sync"
+    ];
+
+    exclude = [
+      # local/dev env caches
+      "**/.direnv"
+
+      # go
+      "**/pkg/mod"
+      "**/.gocache"
+
+      # rust
+      "**/target"
+
+      # python
+      "**/__pycache__"
+      "**/.pytest_cache"
+      "**/.mypy_cache"
+      "**/.ruff_cache"
+      "**/.tox"
+      "**/.venv"
+      "**/venv"
+
+      # js, ts, node, etc
+      "**/node_modules"
+      "**/.next"
+      "**/.nuxt"
+      "**/dist"
+      "**/build"
+      "**/coverage"
+
+      # general editor/tool junk
+      "**/.DS_Store"
+      "**/.idea"
+      "**/.vscode"
+
+      # your temp / restore areas
+      "/home/dave/tmp"
+      "/home/dave/.cache"
+    ];
+
+    pruneOpts = [
+      "--keep-daily 7"
+      "--keep-weekly 4"
+      "--keep-monthly 6"
     ];
 
     extraOptions = [
