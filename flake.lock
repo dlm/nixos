@@ -202,11 +202,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1772781232,
-        "narHash": "sha256-DbGHSKPzpUhZaxzypkhJz0PyDA15BlLpJFWQnNO0fOc=",
+        "lastModified": 1779993396,
+        "narHash": "sha256-py7XqQggqRq/bu92YJFVnoa2QR19x1aVxqbesKmhZ98=",
         "owner": "dlm",
         "repo": "muxwm",
-        "rev": "1656b85363bbe3f35732ee2f953b94af51e6819e",
+        "rev": "847382e0d42e49f103232e1e9f55e4e5c3cc0a92",
         "type": "github"
       },
       "original": {
