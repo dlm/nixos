@@ -26,6 +26,9 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # for development of bivouac
+    bivouac.url = "path:/home/dave/repos/dlm/bivouac";
   };
 
   outputs =
@@ -37,6 +40,7 @@
           ./hosts/petrillo/configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
+          inputs.bivouac.nixosModules.default
         ];
       };
 

@@ -13,6 +13,9 @@
   networking.hostName = "petrillo";
   services.autorandr.enable = true;
 
+  services.biv.enable = true;
+  services.biv.user = "dave";
+
   home-manager.users.dave = {
     home.file.".config/ghostty/config.local".text = ''
       font-size = 10
