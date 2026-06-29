@@ -4,6 +4,10 @@
   inputs,
   ...
 }:
+let
+  resticRepository = "sftp:dave@nuc-0:/backups/restic/petrillo";
+  resticPasswordFile = "/home/dave/.config/sops-nix/secrets/hosts/petrillo/restic-password";
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -80,9 +84,14 @@
   nix.settings.secret-key-files = [ "/home/dave/.config/nix/signing-key.sec" ];
 
   # backups
+  home-manager.users.dave.programs.nushell.environmentVariables = {
+    RESTIC_REPOSITORY = resticRepository;
+    RESTIC_PASSWORD_FILE = resticPasswordFile;
+  };
+
   services.restic.backups.home = {
-    repository = "sftp:dave@nuc-0:/backups/restic/petrillo";
-    passwordFile = "/home/dave/.config/sops-nix/secrets/hosts/petrillo/restic-password";
+    repository = resticRepository;
+    passwordFile = resticPasswordFile;
 
     paths = [
       "/home/dave/repos"
