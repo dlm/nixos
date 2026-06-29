@@ -29,7 +29,7 @@ in
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.networkmanager.insertNameservers = [
+  networking.nameservers = [
     "8.8.8.8"
     "8.8.4.4"
   ];
