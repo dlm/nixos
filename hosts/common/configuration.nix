@@ -22,10 +22,19 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    substituters = [ "https://cache.numtide.com" ];
+    # Also listed as trusted so the flake's own nixConfig request is
+    # accepted rather than warned about on every evaluation.
+    trusted-substituters = [ "https://cache.numtide.com" ];
+    trusted-public-keys = [
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+    ];
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;
