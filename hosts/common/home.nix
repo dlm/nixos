@@ -17,7 +17,6 @@
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
   home.nushell.enable = true;
-  home.keyboard-remap.enable = true;
   home.neovim.enable = true;
   home.toybox.enable = true;
   home.git.enable = true;

@@ -11,6 +11,7 @@ in
   imports = [
     inputs.home-manager.nixosModules.default
     ../../modules/stacks/desktop
+    ../../modules/system/keyd.nix
   ];
 
   # Make username available to all modules
@@ -67,6 +68,7 @@ in
 
   # Enable keybord tools
   hardware.keyboard.zsa.enable = true;
+  hardware.keyboard.laptop-remap.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
