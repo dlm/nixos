@@ -211,6 +211,7 @@ in
 
   virtualisation.docker = {
     enable = true;
+    package = pkgs.docker_29;
     daemon.settings = {
       dns = [
         "8.8.8.8"
