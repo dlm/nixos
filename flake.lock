@@ -133,11 +133,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1791150292,
-        "narHash": "sha256-uuGluFW1miKCdxbzwidAfBRJ+d1H0KxvhJWSAI0OTU4=",
+        "lastModified": 1791238863,
+        "narHash": "sha256-Uy7o/4lXPGqwtCLKRz+69kOC8DNNJGNXuzK5wxhIQrc=",
         "ref": "refs/heads/main",
-        "rev": "4888a6669a6f256e26b7fd77d74673e9695369cc",
-        "revCount": 23,
+        "rev": "1c45a924d4922fe792ec02e9bcb80a265dd6af3d",
+        "revCount": 24,
         "type": "git",
         "url": "file:///home/dave/repos/dlm/key-safe"
       },
