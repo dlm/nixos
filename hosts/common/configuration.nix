@@ -67,7 +67,7 @@ in
   services.displayManager.defaultSession = "none+i3";
   stacks.desktop.enable = true;
 
-  # Enable keybord tools
+  # Enable keyboard tools
   hardware.keyboard.zsa.enable = true;
   hardware.keyboard.laptop-remap.enable = true;
 
