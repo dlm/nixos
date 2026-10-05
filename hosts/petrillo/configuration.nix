@@ -4,10 +4,6 @@
   inputs,
   ...
 }:
-let
-  resticRepository = "sftp:dave@nuc-0:/backups/restic/petrillo";
-  resticPasswordFile = "/home/dave/.config/sops-nix/secrets/hosts/petrillo/restic-password";
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -84,74 +80,15 @@ in
   nix.settings.secret-key-files = [ "/home/dave/.config/nix/signing-key.sec" ];
 
   # backups
-  home-manager.users.dave.programs.nushell.environmentVariables = {
-    RESTIC_REPOSITORY = resticRepository;
-    RESTIC_PASSWORD_FILE = resticPasswordFile;
-  };
-
-  services.restic.backups.home = {
-    repository = resticRepository;
-    passwordFile = resticPasswordFile;
-
+  stacks.backup = {
+    enable = true;
+    sshKeySopsPath = "hosts/petrillo/restic-ssh-key";
+    passwordSopsPath = "hosts/petrillo/restic-password";
     paths = [
       "/home/dave/repos"
       "/home/dave/secrets"
       "/home/dave/sync"
     ];
-
-    exclude = [
-      # local/dev env caches
-      "**/.direnv"
-
-      # go
-      "**/pkg/mod"
-      "**/.gocache"
-
-      # rust
-      "**/target"
-
-      # python
-      "**/__pycache__"
-      "**/.pytest_cache"
-      "**/.mypy_cache"
-      "**/.ruff_cache"
-      "**/.tox"
-      "**/.venv"
-      "**/venv"
-
-      # js, ts, node, etc
-      "**/node_modules"
-      "**/.next"
-      "**/.nuxt"
-      "**/dist"
-      "**/build"
-      "**/coverage"
-
-      # general editor/tool junk
-      "**/.DS_Store"
-      "**/.idea"
-      "**/.vscode"
-
-      # your temp / restore areas
-      "/home/dave/tmp"
-      "/home/dave/.cache"
-    ];
-
-    pruneOpts = [
-      "--keep-daily 7"
-      "--keep-weekly 4"
-      "--keep-monthly 6"
-    ];
-
-    extraOptions = [
-      "sftp.command='ssh dave@nuc-0 -i /home/dave/.config/sops-nix/secrets/hosts/petrillo/restic-ssh-key -s sftp'"
-    ];
-
-    timerConfig = {
-      OnCalendar = "daily";
-      Persistent = true;
-      RandomizedDelaySec = "30m";
-    };
   };
 
   system.stateVersion = "24.11";

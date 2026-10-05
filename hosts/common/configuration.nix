@@ -11,6 +11,7 @@ in
   imports = [
     inputs.home-manager.nixosModules.default
     ../../modules/stacks/desktop
+    ../../modules/stacks/backup
     ../../modules/system/keyd.nix
   ];
 

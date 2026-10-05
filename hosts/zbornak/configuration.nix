@@ -84,5 +84,16 @@
   # Enable firmware updates (recommended for Framework laptops)
   services.fwupd.enable = true;
 
+  # backups
+  stacks.backup = {
+    enable = true;
+    sshKeySopsPath = "hosts/zbornak/restic-ssh-key";
+    passwordSopsPath = "hosts/zbornak/restic-password";
+    paths = [
+      "/home/dave/repos"
+      "/home/dave/sync"
+    ];
+  };
+
   system.stateVersion = "25.11";
 }
