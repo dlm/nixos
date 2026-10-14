@@ -17,6 +17,7 @@ in
           rightalt = "rightmeta";
           rightmeta = "rightalt";
           capslock = "overload(control, esc)";
+          tab = "overload(alt, tab)";
         };
       };
     };
