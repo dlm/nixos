@@ -73,6 +73,8 @@
     "dunst/dunstrc".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/dunst/dunstrc;
     "direnv/direnv.toml".source =
       config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/direnv/direnv.toml;
+    "direnv/direnvrc".source =
+      config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/direnv/direnvrc;
   };
 
   programs.nushell.extraConfig = ''
