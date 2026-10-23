@@ -23,6 +23,25 @@ in
     services.xserver.autoRepeatDelay = 300;
     services.xserver.autoRepeatInterval = 20;
 
+    # login screen: lightdm-slick-greeter instead of the default gtk greeter.
+    # gtk-greeter's login box uses fixed pixel widths that don't flex for a
+    # larger font (text got cut off at 16pt) -- slick-greeter's layout
+    # actually scales.
+    services.xserver.displayManager.lightdm.background = "#1d1f21";
+    services.xserver.displayManager.lightdm.greeters.slick = {
+      enable = true;
+      theme = {
+        name = "Arc-Dark";
+        package = pkgs.arc-theme;
+      };
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
+      font.name = "Ubuntu 15";
+      cursorTheme.size = 24;
+    };
+
     # file manager + virtual filesystem support
     services.gvfs.enable = true;
     programs.thunar.enable = true;

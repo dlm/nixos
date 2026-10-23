@@ -96,6 +96,10 @@ in
     jack.enable = true;
   };
 
+  # nushell isn't in /etc/shells by default, which makes accountsservice
+  # treat dave as a system account and hide him from the lightdm user list
+  environment.shells = [ pkgs.nushell ];
+
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.dave = {
     isNormalUser = true;
