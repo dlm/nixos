@@ -41,12 +41,10 @@
 
   home-manager.users.dave = {
     xresources.properties."Xft.dpi" = "144";
-    home.file.".config/ghostty/config.local".text = ''
-      font-size = 12
-    '';
-    home.file.".config/kitty/local.conf".text = ''
-      font_size 12.0
-    '';
+    home.localConfig = {
+      ghostty = "font-size = 12";
+      kitty = "font_size 12.0";
+    };
 
     programs.autorandr = {
       enable = true;

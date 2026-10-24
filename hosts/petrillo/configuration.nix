@@ -17,12 +17,10 @@
   services.biv.user = "dave";
 
   home-manager.users.dave = {
-    home.file.".config/ghostty/config.local".text = ''
-      font-size = 10
-    '';
-    home.file.".config/kitty/local.conf".text = ''
-      font_size 10.0
-    '';
+    home.localConfig = {
+      ghostty = "font-size = 10";
+      kitty = "font_size 10.0";
+    };
 
     programs.autorandr = {
       enable = true;
