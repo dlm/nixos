@@ -15,6 +15,23 @@
 
   services.autorandr.enable = true;
 
+  # Trying niri as an alternative to i3 -- selectable as a separate session
+  # from the lightdm login screen, doesn't replace the existing i3 setup.
+  stacks.desktop-niri.enable = true;
+  stacks.desktop-niri.outputConfig = ''
+    // 2880x1920 @ 13" laptop panel (~257 ppi)
+    output "eDP-1" {
+        mode "2880x1920@120.000"
+        scale 2
+    }
+
+    // DELL U4025QW, 5120x2160 ultrawide (~140 ppi)
+    output "DP-1" {
+        mode "5120x2160@120.000"
+        scale 1.25
+    }
+  '';
+
   # HiDPI display (2880x1920 @ 13") - 1.5x scaling
   # Xft.dpi is the login-time default (laptop-only); autorandr postswitch
   # hooks update it dynamically when switching profiles.
