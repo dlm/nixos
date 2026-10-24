@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     key-safe = {
-      url = "git+file:///home/dave/repos/dlm/key-safe";
+      url = "git+ssh://git@github.com/dlm/key-safe.git";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };

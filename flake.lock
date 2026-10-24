@@ -139,11 +139,11 @@
         "rev": "a9867b3cf6302994708009b0b99ed6bab4e9316d",
         "revCount": 31,
         "type": "git",
-        "url": "file:///home/dave/repos/dlm/key-safe"
+        "url": "ssh://git@github.com/dlm/key-safe.git"
       },
       "original": {
         "type": "git",
-        "url": "file:///home/dave/repos/dlm/key-safe"
+        "url": "ssh://git@github.com/dlm/key-safe.git"
       }
     },
     "llm-agents": {
