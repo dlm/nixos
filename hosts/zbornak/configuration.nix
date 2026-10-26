@@ -66,6 +66,7 @@
           hooks.postswitch = ''
             echo "Xft.dpi: 144" | xrdb -merge
             i3-msg restart
+            systemctl --user restart feh-background.service
           '';
         };
 
@@ -88,6 +89,7 @@
           hooks.postswitch = ''
             echo "Xft.dpi: 96" | xrdb -merge
             i3-msg restart
+            systemctl --user restart feh-background.service
           '';
         };
       };
