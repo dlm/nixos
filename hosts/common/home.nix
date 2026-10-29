@@ -63,14 +63,10 @@
   xdg.configFile = {
     "nvim".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/nvim;
     "tmux".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/tmux;
-    "i3".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/i3;
     "zsh".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/zsh;
-    "rofi".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/rofi;
     "ghostty".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/ghostty;
     "kitty".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/kitty;
     "git".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/git;
-    "feh".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/feh;
-    "dunst/dunstrc".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/dunst/dunstrc;
     "direnv/direnv.toml".source =
       config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/direnv/direnv.toml;
     "direnv/direnvrc".source =

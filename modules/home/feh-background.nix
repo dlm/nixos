@@ -17,6 +17,9 @@
   config = lib.mkIf config.services.feh-background.enable {
     home.packages = [ pkgs.feh ];
 
+    xdg.configFile."feh".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/feh";
+
     systemd.user.services.feh-background = {
       Unit = {
         Description = "Set desktop background with feh";

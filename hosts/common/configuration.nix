@@ -178,7 +178,6 @@ in
     pkgs.unzip
     pkgs.wget
     pkgs.fd
-    pkgs.xclip
     pkgs.harper
 
     pkgs.gcc
@@ -188,7 +187,6 @@ in
     pkgs.nixfmt-rfc-style
     pkgs.ghostty
     pkgs.kitty
-    pkgs.arandr
   ];
 
   # setup flatpak

@@ -49,8 +49,11 @@ in
 
     # Home Manager configuration
     home-manager.users.${username} = {
-      # notificaiton manager
-      services.dunst.enable = true;
+      home.i3.enable = true;
+      home.rofi.enable = true;
+
+      # notification manager
+      home.dunst.enable = true;
 
       # background manager
       services.feh-background.enable = true;
@@ -69,13 +72,11 @@ in
 
         # person desktop environment
         i3lock # lock screen
-        rofi # launcher
-        feh # desktop background
         scrot # screen capture utility
-        dunst # notification manager
         libnotify # send notifications
         xclip # clipboard management
         clipmenu # clipboard management
+        arandr
 
         # brightness control
         brightnessctl

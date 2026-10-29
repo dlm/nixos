@@ -50,6 +50,7 @@ in
           playerctl
           brightnessctl
           swaybg
+          wdisplays # wayland equivalent of arandr
 
           # Wrapper so the (plain, nix-free) env/niri/config.kdl can spawn this
           # by bare name -- polkit_gnome's agent binary lives under libexec,
@@ -59,11 +60,11 @@ in
           '')
         ];
 
-        programs.waybar.enable = true;
-        programs.fuzzel.enable = true;
+        home.niri.enable = true;
+        home.waybar.enable = true;
+        home.fuzzel.enable = true;
+        home.mako.enable = true;
         programs.swaylock.enable = true;
-
-        services.mako.enable = true;
 
         services.swayidle = {
           enable = true;
@@ -73,15 +74,21 @@ in
               command = "${pkgs.swaylock}/bin/swaylock -f";
             }
             {
-              timeout = 900;
-              command = "niri msg action power-off-monitors";
+              # Deliberately close behind the lock above (not e.g. 900s):
+              # each timeout counts seconds-since-last-input independently,
+              # so a long gap here means any single keystroke on the lock
+              # screen (wrong password attempt, checking if it's locked)
+              # resets both counters and this may never actually fire.
+              timeout = 605;
+              command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
+              resumeCommand = "${pkgs.niri}/bin/niri msg action power-on-monitors";
             }
           ];
+          events = {
+            before-sleep = "${pkgs.swaylock}/bin/swaylock -f";
+            after-resume = "${pkgs.niri}/bin/niri msg action power-on-monitors";
+          };
         };
-
-        # Hand-edited, hot-reloads on save -- same pattern as i3/rofi/kitty.
-        xdg.configFile."niri/config.kdl".source =
-          config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/niri/config.kdl;
 
         # Nix-generated, pulled in via `include` from config.kdl.
         xdg.configFile."niri/outputs.kdl".text = cfg.outputConfig;
