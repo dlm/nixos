@@ -107,6 +107,7 @@
         variant = "frappe";
       };
     };
+    gtk4.theme = config.gtk.theme;
   };
 
   # services.blueman.enable (hosts/common/configuration.nix) autostarts
