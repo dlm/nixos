@@ -94,11 +94,29 @@
   #  /etc/profiles/per-user/dave/etc/profile.d/hm-session-vars.sh
   #
   # Dark mode for GTK3/4 apps and libadwaita (also used by XDG portal for flatpak apps)
+  # Catppuccin theme so GTK apps (nm-applet, blueman-manager, etc.) match the
+  # frappe palette used in waybar/kitty/rofi/etc.
   gtk = {
     enable = true;
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+    theme = {
+      name = "catppuccin-frappe-blue-standard";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "blue" ];
+        variant = "frappe";
+      };
+    };
   };
+
+  # services.blueman.enable (hosts/common/configuration.nix) autostarts
+  # blueman-applet for its tray icon. We still want blueman-manager for
+  # pairing, just not a tray icon dedicated to it -- this overrides the
+  # system-wide autostart entry per the XDG autostart spec.
+  xdg.configFile."autostart/blueman.desktop".text = ''
+    [Desktop Entry]
+    Hidden=true
+  '';
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
