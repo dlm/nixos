@@ -43,7 +43,6 @@
     xresources.properties."Xft.dpi" = "144";
     home.localConfig = {
       ghostty = "font-size = 12";
-      kitty = "font_size 12.0";
     };
 
     programs.autorandr = {
