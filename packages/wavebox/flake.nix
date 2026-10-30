@@ -16,11 +16,11 @@
     {
       packages.x86_64-linux.default = pkgs.stdenv.mkDerivation rec {
         pname = "wavebox";
-        version = "152.2.174-2";
+        version = "156.3.22-2";
 
         src = pkgs.fetchurl {
           url = "https://download.wavebox.app/stable/linux/appimage/Wavebox_${version}_x86_64.AppImage";
-          hash = "sha256-V5xjWjRVQtD4BErTX4JcWDHfmOWTko1KqP8I8u/8jdQ=";
+          hash = "sha256-rfXYBLALslBU+gx4mYAEcDjLO4XPnL6Z03CCKuDhW/Y=";
         };
 
         nativeBuildInputs = [ pkgs.appimage-run ];
