@@ -5,8 +5,8 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1781739237,
-        "narHash": "sha256-nX2gdEMN6VgOTaFSFtcDJsrr6BvauPM1GhhdRnB4Prg=",
+        "lastModified": 1793398407,
+        "narHash": "sha256-4w1psvuvnu3TYpxlcV1igBYhr6QcvLIfvzZ0qgxu9X0=",
         "path": "/home/dave/repos/dlm/bivouac",
         "type": "path"
       },
