@@ -16,6 +16,7 @@
       # dependencies in the configuration
       ripgrep # telescope
       git # fugitive
+      tree-sitter # nvim-treesitter parser installs
     ];
   };
 }
