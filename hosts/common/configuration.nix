@@ -182,8 +182,6 @@ in
 
     pkgs.gcc
     pkgs.python3
-    pkgs.stylua
-    pkgs.lua-language-server
     pkgs.nixfmt-rfc-style
     pkgs.nixd
     pkgs.ghostty
