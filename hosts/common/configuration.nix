@@ -185,6 +185,7 @@ in
     pkgs.stylua
     pkgs.lua-language-server
     pkgs.nixfmt-rfc-style
+    pkgs.nixd
     pkgs.ghostty
     pkgs.kitty
   ];
