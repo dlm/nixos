@@ -7,6 +7,10 @@
 let
   cfg = config.stacks.backup;
 
+  # The other half of this (the directories and authorized keys on nuc-0, and
+  # the secrets themselves) lives in the homelab and key-safe repos. See
+  # homelab/docs/backup/adding-a-client.md before adding or renaming a host.
+
   # basic information for the target backup server
   backupUser = "dave";
   backupHost = "nuc-0";
