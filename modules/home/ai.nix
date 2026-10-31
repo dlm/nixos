@@ -15,7 +15,7 @@ in
   };
 
   config = lib.mkIf config.home.ai.enable {
-    home.packages = with pkgs; [
+    home.packages = [
       ai-tools.gemini-cli
       ai-tools.claude-code
       ai-tools.codex
