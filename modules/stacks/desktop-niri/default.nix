@@ -64,14 +64,33 @@ in
         home.waybar.enable = true;
         home.fuzzel.enable = true;
         home.mako.enable = true;
-        programs.swaylock.enable = true;
+        programs.swaylock = {
+          enable = true;
+          # swaylock-effects is a CLI-compatible fork that adds the
+          # blur/screenshot/clock effects below; the binary is still
+          # named `swaylock`.
+          package = pkgs.swaylock-effects;
+          settings = {
+            screenshots = true;
+            effect-blur = "7x5";
+            effect-vignette = "0.5:0.5";
+            fade-in = 0.2;
+            clock = true;
+            timestr = "%H:%M";
+            datestr = "%A, %B %d";
+            indicator = true;
+            indicator-radius = 120;
+            indicator-thickness = 10;
+            show-failed-attempts = true;
+          };
+        };
 
         services.swayidle = {
           enable = true;
           timeouts = [
             {
               timeout = 600;
-              command = "${pkgs.swaylock}/bin/swaylock -f";
+              command = "${pkgs.swaylock-effects}/bin/swaylock -f";
             }
             {
               # Deliberately close behind the lock above (not e.g. 900s):
@@ -85,7 +104,7 @@ in
             }
           ];
           events = {
-            before-sleep = "${pkgs.swaylock}/bin/swaylock -f";
+            before-sleep = "${pkgs.swaylock-effects}/bin/swaylock -f";
             after-resume = "${pkgs.niri}/bin/niri msg action power-on-monitors";
           };
         };
