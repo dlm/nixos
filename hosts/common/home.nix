@@ -17,6 +17,7 @@
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
   home.nushell.enable = true;
+  home.zsh.enable = true;
   home.neovim.enable = true;
   home.toybox.enable = true;
   home.git.enable = true;
@@ -48,7 +49,6 @@
   # Here we use mkOutofStoreSymlink so that we don't have to
   # rerun home manager on every config update
   home.file = {
-    ".zshrc".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/zsh/zshrc.local;
     "bin/scripts/".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/bin/scripts;
     "bin/scripts-bky/".source =
       config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env-bky/bin/scripts;
@@ -63,7 +63,6 @@
   xdg.configFile = {
     "nvim".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/nvim;
     "tmux".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/tmux;
-    "zsh".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/zsh;
     "ghostty".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/ghostty;
     "kitty".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/kitty;
     "git".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/git;
