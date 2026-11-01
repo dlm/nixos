@@ -17,17 +17,25 @@ let
   backupBasePath = "/backups/restic";
   repository = "sftp:${backupUser}@${backupHost}:${backupBasePath}/${config.networking.hostName}";
 
-  # this host's secrets in key-safe, decrypted by sops-nix at login. Only
-  # the paths are used here, so the plaintext never reaches the nix store.
-  passwordSecret = "hosts/${config.networking.hostName}/restic-password";
-  sshKeySecret = "hosts/${config.networking.hostName}/restic-ssh-key";
+  # the secrets named below, decrypted by sops-nix at login. Only the paths
+  # are used here, so the plaintext never reaches the nix store.
   hmSecrets = config.home-manager.users.${username}.sops.secrets;
-  passwordFile = hmSecrets.${passwordSecret}.path;
-  sshKeyFile = hmSecrets.${sshKeySecret}.path;
+  passwordFile = hmSecrets.${cfg.passwordSecret}.path;
+  sshKeyFile = hmSecrets.${cfg.sshKeySecret}.path;
 in
 {
   options.stacks.backup = {
     enable = lib.mkEnableOption "restic based backups to nuc-0";
+
+    passwordSecret = lib.mkOption {
+      type = lib.types.str;
+      description = "name of the restic repository password in the sops file (e.g. hosts/petrillo/restic-password)";
+    };
+
+    sshKeySecret = lib.mkOption {
+      type = lib.types.str;
+      description = "name of the SSH private key used to reach the sftp backend in the sops file (e.g. hosts/petrillo/restic-ssh-key)";
+    };
 
     paths = lib.mkOption {
       type = lib.types.listOf lib.types.str;
@@ -38,8 +46,8 @@ in
   config = lib.mkIf cfg.enable {
     home-manager.users.${username} = {
       sops.secrets = {
-        ${passwordSecret} = { };
-        ${sshKeySecret} = { };
+        ${cfg.passwordSecret} = { };
+        ${cfg.sshKeySecret} = { };
       };
 
       # set the nushell environment variables so that we do not need to
