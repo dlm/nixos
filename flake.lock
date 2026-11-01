@@ -5,14 +5,17 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1793398407,
-        "narHash": "sha256-4w1psvuvnu3TYpxlcV1igBYhr6QcvLIfvzZ0qgxu9X0=",
-        "path": "/home/dave/repos/dlm/bivouac",
-        "type": "path"
+        "lastModified": 1781739199,
+        "narHash": "sha256-6iKzd7BknTGGRsV/H6kloiQGYoiLGFbt0uPEhkvn5BI=",
+        "owner": "dlm",
+        "repo": "bivouac",
+        "rev": "2e410fbb886d2201424839f16b484e5a1dc249f7",
+        "type": "github"
       },
       "original": {
-        "path": "/home/dave/repos/dlm/bivouac",
-        "type": "path"
+        "owner": "dlm",
+        "repo": "bivouac",
+        "type": "github"
       }
     },
     "bun2nix": {

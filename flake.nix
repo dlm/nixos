@@ -7,6 +7,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     llm-agents.url = "github:numtide/llm-agents.nix";
     muxwm.url = "github:dlm/muxwm";
+    bivouac.url = "github:dlm/bivouac";
     haplab.url = "path:./packages/haplab";
     wavebox = {
       url = "path:./packages/wavebox";
@@ -21,9 +22,6 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # for development of bivouac
-    bivouac.url = "path:/home/dave/repos/dlm/bivouac";
   };
 
   outputs =

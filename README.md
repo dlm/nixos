@@ -40,3 +40,17 @@ environment  for example
 ```bash
 alias v="nix develop <path-to-nvim-flake> --command nvim"
 ```
+
+## Building against a local checkout of my own projects
+
+Projects like `bivouac` and `muxwm` are pinned to GitHub in `flake.lock`. To
+try local, uncommitted changes without pushing or touching the lock file,
+override the input for a single rebuild:
+
+```bash
+sudo nixos-rebuild switch --flake .#petrillo \
+    --override-input bivouac path:/home/dave/repos/dlm/bivouac
+```
+
+Once the changes are pushed, pick them up for real with
+`nix flake update bivouac`.
