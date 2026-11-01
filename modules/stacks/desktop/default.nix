@@ -84,7 +84,8 @@ in
       { config, ... }:
       {
         # wallpaper, read by feh (i3) and swaybg (niri)
-        xdg.configFile."feh".source = config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/feh";
+        xdg.configFile."wallpaper".source =
+          config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/wallpaper";
 
         # auto-mount removable media
         services.udiskie.enable = true;

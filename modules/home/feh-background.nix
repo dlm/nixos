@@ -9,7 +9,7 @@
     enable = lib.mkEnableOption "feh service for setting background images";
     backgroundImage = lib.mkOption {
       type = lib.types.str;
-      default = "${config.home.homeDirectory}/.config/feh/background";
+      default = "${config.home.homeDirectory}/.config/wallpaper/current";
       description = "Path to image to use as background";
     };
   };
