@@ -14,8 +14,10 @@ repo links into place.
   (`configuration.nix` for the system, `home.nix` for Home Manager).
 - `modules/home/` — Home Manager modules, one per app or tool, each behind a
   `home.<name>.enable` option. Every file here is imported automatically.
-- `modules/stacks/` — bigger system-level bundles (`desktop` for i3,
-  `desktop-niri`, `backup`), each behind `stacks.<name>.enable`.
+- `modules/stacks/` — bigger system-level bundles, each behind
+  `stacks.<name>.enable`. `desktop` is the shared base (login screen, file
+  manager, ...) with each session under it (`stacks.desktop.i3`,
+  `stacks.desktop.niri`); `backup` is restic to nuc-0.
 - `modules/system/` — smaller system modules.
 - `packages/` — local flakes for software I package myself (`haplab`,
   `wavebox`).

@@ -3,25 +3,58 @@
   lib,
   pkgs,
   username,
-  inputs,
   ...
 }:
 let
-  muxwm = inputs.muxwm.packages.${pkgs.stdenv.hostPlatform.system}.default;
-in
+  cfg = config.stacks.desktop;
 
+  # display manager session names for each session
+  sessionNames = {
+    i3 = "none+i3";
+    niri = "niri";
+  };
+in
 {
+  # The base desktop (login screen, file manager, etc.) lives here; each
+  # session that can be picked from the login screen is its own file.
+  imports = [
+    ./i3.nix
+    ./niri.nix
+  ];
+
   options.stacks.desktop = {
-    enable = lib.mkEnableOption "desktop stack with i3 window manager";
+    enable = lib.mkEnableOption "desktop base shared by every session (login screen, file manager, ...)";
+
+    defaultSession = lib.mkOption {
+      type = lib.types.nullOr (lib.types.enum (builtins.attrNames sessionNames));
+      default = null;
+      description = ''
+        Session preselected on the login screen. Must be one of the enabled
+        sessions. null leaves it to the display manager, which remembers the
+        last session used.
+      '';
+    };
   };
 
-  config = lib.mkIf config.stacks.desktop.enable {
-    # xserver config
+  config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = cfg.i3.enable || cfg.niri.enable;
+        message = "stacks.desktop is enabled without any session; enable stacks.desktop.i3 or stacks.desktop.niri.";
+      }
+      {
+        assertion = cfg.defaultSession == null || cfg.${cfg.defaultSession}.enable;
+        message = "stacks.desktop.defaultSession is \"${toString cfg.defaultSession}\" but stacks.desktop.${toString cfg.defaultSession} is not enabled.";
+      }
+    ];
+
+    services.displayManager.defaultSession = lib.mkIf (
+      cfg.defaultSession != null
+    ) sessionNames.${cfg.defaultSession};
+
+    # lightdm runs on X, even when the session it starts is Wayland
     services.xserver.enable = true;
     services.xserver.desktopManager.xterm.enable = false;
-    services.xserver.windowManager.i3.enable = true;
-    services.xserver.autoRepeatDelay = 300;
-    services.xserver.autoRepeatInterval = 20;
 
     # login screen: lightdm-slick-greeter instead of the default gtk greeter.
     # gtk-greeter's login box uses fixed pixel widths that don't flex for a
@@ -47,43 +80,27 @@ in
     programs.thunar.enable = true;
     programs.xfconf.enable = true;
 
-    # Home Manager configuration
-    home-manager.users.${username} = {
-      home.i3.enable = true;
-      home.rofi.enable = true;
+    home-manager.users.${username} =
+      { config, ... }:
+      {
+        # wallpaper, read by feh (i3) and swaybg (niri)
+        xdg.configFile."feh".source = config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/feh";
 
-      # notification manager
-      home.dunst.enable = true;
+        # auto-mount removable media
+        services.udiskie.enable = true;
 
-      # background manager
-      services.feh-background.enable = true;
+        home.packages = with pkgs; [
+          # brightness control
+          brightnessctl
 
-      # clipboad manager
-      services.clipmenu.enable = true;
+          # network tray icon; starts itself via XDG autostart in any session
+          # (shown in the i3bar and waybar trays)
+          networkmanagerapplet
 
-      # auto-mount removable media
-      services.udiskie.enable = true;
-
-      # Base packages for desktop stack
-      home.packages = with pkgs; [
-        # status bar
-        i3status
-        networkmanagerapplet
-
-        # person desktop environment
-        i3lock # lock screen
-        scrot # screen capture utility
-        libnotify # send notifications
-        xclip # clipboard management
-        clipmenu # clipboard management
-        arandr
-
-        # brightness control
-        brightnessctl
-
-        # personal tools
-        muxwm
-      ];
-    };
+          # notify-send, used by scripts in either session (dunst or mako
+          # displays it)
+          libnotify
+        ];
+      };
   };
 }

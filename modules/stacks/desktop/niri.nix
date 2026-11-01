@@ -6,11 +6,11 @@
   ...
 }:
 let
-  cfg = config.stacks.desktop-niri;
+  cfg = config.stacks.desktop.niri;
 in
 {
-  options.stacks.desktop-niri = {
-    enable = lib.mkEnableOption "desktop stack with niri (Wayland scrollable-tiling compositor)";
+  options.stacks.desktop.niri = {
+    enable = lib.mkEnableOption "niri session (Wayland scrollable-tiling compositor)";
 
     outputConfig = lib.mkOption {
       type = lib.types.lines;
@@ -36,6 +36,13 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = config.stacks.desktop.enable;
+        message = "stacks.desktop.niri needs stacks.desktop (the login screen and shared desktop base).";
+      }
+    ];
+
     programs.niri.enable = true;
 
     # Required for swaylock to authenticate against PAM.
@@ -48,7 +55,6 @@ in
           alacritty
           xwayland-satellite # niri has built-in on-demand integration with this
           playerctl
-          brightnessctl
           swaybg
           wdisplays # wayland equivalent of arandr
 

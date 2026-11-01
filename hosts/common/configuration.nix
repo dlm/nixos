@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   ...
@@ -11,7 +12,6 @@ in
   imports = [
     inputs.home-manager.nixosModules.default
     ../../modules/stacks/desktop
-    ../../modules/stacks/desktop-niri
     ../../modules/stacks/backup
     ../../modules/system/keyd.nix
   ];
@@ -65,8 +65,11 @@ in
   };
 
   # Enable desktops
-  services.displayManager.defaultSession = "none+i3";
-  stacks.desktop.enable = true;
+  stacks.desktop = {
+    enable = true;
+    i3.enable = true;
+    defaultSession = lib.mkDefault "i3";
+  };
 
   # Enable keyboard tools
   hardware.keyboard.zsa.enable = true;

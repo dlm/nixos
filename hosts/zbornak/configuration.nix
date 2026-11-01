@@ -17,8 +17,8 @@
 
   # Trying niri as an alternative to i3 -- selectable as a separate session
   # from the lightdm login screen, doesn't replace the existing i3 setup.
-  stacks.desktop-niri.enable = true;
-  stacks.desktop-niri.outputConfig = ''
+  stacks.desktop.niri.enable = true;
+  stacks.desktop.niri.outputConfig = ''
     // 2880x1920 @ 13" laptop panel (~257 ppi)
     output "eDP-1" {
         mode "2880x1920@120.000"

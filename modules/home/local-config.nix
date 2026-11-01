@@ -16,7 +16,7 @@
 
       The app's own config is expected to pull this in by absolute path
       (kitty: `include`, ghostty: `config-file`), same idea as how niri's
-      `stacks.desktop-niri.outputConfig` gets pulled into env/niri/config.kdl.
+      `stacks.desktop.niri.outputConfig` gets pulled into env/niri/config.kdl.
     '';
     example = {
       kitty = "font_size 12.0";
