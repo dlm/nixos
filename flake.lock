@@ -137,11 +137,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1792702180,
-        "narHash": "sha256-rCjzvWvZLGOFwmbKeNbdw/4wtFn6/kLQ+ud5lPP4tjU=",
+        "lastModified": 1793574349,
+        "narHash": "sha256-7dv4XhJqyEkMJGRctpSK8aSmyL6cmgyZDfIQDHzKNnA=",
         "ref": "refs/heads/main",
-        "rev": "a9867b3cf6302994708009b0b99ed6bab4e9316d",
-        "revCount": 31,
+        "rev": "4243a259fe32fc19a1faad8278da5170f5f1735e",
+        "revCount": 33,
         "type": "git",
         "url": "ssh://git@github.com/dlm/key-safe.git"
       },
