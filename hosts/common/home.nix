@@ -49,7 +49,8 @@
   # Here we use mkOutofStoreSymlink so that we don't have to
   # rerun home manager on every config update
   home.file = {
-    "bin/scripts/".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/bin/scripts;
+    "bin/scripts/".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/bin/scripts";
     "bin/scripts-bky/".source =
       config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env-bky/bin/scripts;
     # our launch script acts as a wrapper for the various tools we use across
@@ -57,23 +58,23 @@
     # link the launch script to a "well known" location
     # so that we can launch our tool from anywhere
     ".local/bin/launch".source =
-      config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/bin/scripts/launch;
+      config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/bin/scripts/launch";
   };
 
   xdg.configFile = {
-    "nvim".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/nvim;
-    "tmux".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/tmux;
-    "ghostty".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/ghostty;
-    "kitty".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/kitty;
-    "git".source = config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/git;
+    "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/nvim";
+    "tmux".source = config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/tmux";
+    "ghostty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/ghostty";
+    "kitty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/kitty";
+    "git".source = config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/git";
     "direnv/direnv.toml".source =
-      config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/direnv/direnv.toml;
+      config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/direnv/direnv.toml";
     "direnv/direnvrc".source =
-      config.lib.file.mkOutOfStoreSymlink /home/dave/repos/dlm/env/direnv/direnvrc;
+      config.lib.file.mkOutOfStoreSymlink "${config.home.envRepoPath}/direnv/direnvrc";
   };
 
   programs.nushell.extraConfig = ''
-    source /home/dave/repos/dlm/env/nushell/config.nu
+    source ${config.home.envRepoPath}/nushell/config.nu
   '';
 
   # Home Manager can also manage your environment variables through
