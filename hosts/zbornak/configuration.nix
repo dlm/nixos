@@ -101,8 +101,6 @@
   # backups
   stacks.backup = {
     enable = true;
-    sshKeySopsPath = "hosts/zbornak/restic-ssh-key";
-    passwordSopsPath = "hosts/zbornak/restic-password";
     paths = [
       "/home/dave/repos"
       "/home/dave/sync"

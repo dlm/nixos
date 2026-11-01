@@ -8,8 +8,8 @@ let
   cfg = config.stacks.backup;
 
   # The other half of this (the directories and authorized keys on nuc-0, and
-  # the secrets themselves) lives in the homelab and key-safe repos. See
-  # homelab/docs/backup/adding-a-client.md before adding or renaming a host.
+  # the encrypted secrets themselves) lives in the homelab and key-safe repos.
+  # See homelab/docs/backup/adding-a-client.md before adding or renaming a host.
 
   # basic information for the target backup server
   backupUser = "dave";
@@ -17,24 +17,17 @@ let
   backupBasePath = "/backups/restic";
   repository = "sftp:${backupUser}@${backupHost}:${backupBasePath}/${config.networking.hostName}";
 
-  # basic information for sops on host
-  hostSopsRoot = "/home/${username}/.config/sops-nix/secrets";
-  passwordFile = "${hostSopsRoot}/${cfg.passwordSopsPath}";
-  sshKeyFile = "${hostSopsRoot}/${cfg.sshKeySopsPath}";
+  # this host's secrets in key-safe, decrypted by sops-nix at login. Only
+  # the paths are used here, so the plaintext never reaches the nix store.
+  passwordSecret = "hosts/${config.networking.hostName}/restic-password";
+  sshKeySecret = "hosts/${config.networking.hostName}/restic-ssh-key";
+  hmSecrets = config.home-manager.users.${username}.sops.secrets;
+  passwordFile = hmSecrets.${passwordSecret}.path;
+  sshKeyFile = hmSecrets.${sshKeySecret}.path;
 in
 {
   options.stacks.backup = {
     enable = lib.mkEnableOption "restic based backups to nuc-0";
-
-    passwordSopsPath = lib.mkOption {
-      type = lib.types.str;
-      description = "sops key path for the restic repository password. (e.g. hosts/petrillo/restic-password)";
-    };
-
-    sshKeySopsPath = lib.mkOption {
-      type = lib.types.str;
-      description = "sops key path to the SSH private key used to reach the sftp backend (e.g. hosts/petrillo/restic-ssh-key";
-    };
 
     paths = lib.mkOption {
       type = lib.types.listOf lib.types.str;
@@ -43,11 +36,18 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # set the nushell environment variables so that we do not need to
-    # constantly tell restic the auth data
-    home-manager.users.${username}.programs.nushell.environmentVariables = {
-      RESTIC_REPOSITORY = repository;
-      RESTIC_PASSWORD_FILE = passwordFile;
+    home-manager.users.${username} = {
+      sops.secrets = {
+        ${passwordSecret} = { };
+        ${sshKeySecret} = { };
+      };
+
+      # set the nushell environment variables so that we do not need to
+      # constantly tell restic the auth data
+      programs.nushell.environmentVariables = {
+        RESTIC_REPOSITORY = repository;
+        RESTIC_PASSWORD_FILE = passwordFile;
+      };
     };
 
     services.restic.backups.main = {

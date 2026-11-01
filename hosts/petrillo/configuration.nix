@@ -80,8 +80,6 @@
   # backups
   stacks.backup = {
     enable = true;
-    sshKeySopsPath = "hosts/petrillo/restic-ssh-key";
-    passwordSopsPath = "hosts/petrillo/restic-password";
     paths = [
       "/home/dave/repos"
       "/home/dave/secrets"
