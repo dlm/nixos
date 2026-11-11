@@ -64,13 +64,6 @@ in
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable desktops
-  stacks.desktop = {
-    enable = true;
-    i3.enable = true;
-    defaultSession = lib.mkDefault "i3";
-  };
-
   # Enable keyboard tools
   hardware.keyboard.zsa.enable = true;
   hardware.keyboard.laptop-remap.enable = true;

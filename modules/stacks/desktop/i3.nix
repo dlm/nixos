@@ -16,12 +16,8 @@ in
   };
 
   config = lib.mkIf config.stacks.desktop.i3.enable {
-    assertions = [
-      {
-        assertion = config.stacks.desktop.enable;
-        message = "stacks.desktop.i3 needs stacks.desktop (the login screen and shared desktop base).";
-      }
-    ];
+    # the login screen and shared desktop base
+    stacks.desktop.enable = true;
 
     # xserver config
     services.xserver.windowManager.i3.enable = true;

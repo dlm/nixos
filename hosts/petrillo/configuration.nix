@@ -11,6 +11,8 @@
   ];
 
   networking.hostName = "petrillo";
+
+  stacks.desktop.i3.enable = true;
   services.autorandr.enable = true;
 
   services.biv.enable = true;

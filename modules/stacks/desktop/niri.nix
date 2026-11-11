@@ -36,12 +36,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = config.stacks.desktop.enable;
-        message = "stacks.desktop.niri needs stacks.desktop (the login screen and shared desktop base).";
-      }
-    ];
+    # the login screen and shared desktop base
+    stacks.desktop.enable = true;
 
     programs.niri.enable = true;
 
